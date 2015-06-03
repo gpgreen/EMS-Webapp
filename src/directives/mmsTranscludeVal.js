@@ -47,7 +47,7 @@ function mmsTranscludeVal(ElementService, UtilsService, $log, $compile, $templat
                         s = s.replace('<', '&lt;');
                     }
                     toCompileList.push(s);
-                } else {
+         } else {
                     break;
                 }
             } 
@@ -58,7 +58,7 @@ function mmsTranscludeVal(ElementService, UtilsService, $log, $compile, $templat
                 var toCompile = toCompileList.join(' ');
                 if (toCompile === '') {
                     element.html('<span' + ((scope.version === 'latest') ? '' : ' class="placeholder"') + '>(no value)</span>');
-                    return;
+             return;
                 }
                 element.append(toCompile);
                 $compile(element.contents())(scope); 
@@ -90,7 +90,7 @@ function mmsTranscludeVal(ElementService, UtilsService, $log, $compile, $templat
                     version = viewVersion.version;
             }
             scope.version = version ? version : 'latest';
-            ElementService.getElement(scope.mmsEid, false, ws, version)
+     ElementService.getElement(scope.mmsEid, false, ws, version)
             .then(function(data) {
                 scope.element = data;
                 scope.values = scope.element.specialization.value;
@@ -100,7 +100,7 @@ function mmsTranscludeVal(ElementService, UtilsService, $log, $compile, $templat
                 scope.$watch('values', recompile, true);
             }, function(reason) {
                 element.html('<span class="error">value cf ' + newVal + ' not found</span>');
-                growl.error('Cf Val Error: ' + reason.message + ': ' + scope.mmsEid);
+         growl.error('Cf Val Error: ' + reason.message + ': ' + scope.mmsEid);
             });
         });
     };

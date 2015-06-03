@@ -52,7 +52,7 @@ function SiteService($q, $http, URLService, CacheService, _) {
                 deferred.reject({status: 404, data: '', message: "Site not found"});
         }, function(reason) {
             deferred.reject(reason);
-        });
+ });
         return deferred.promise;
     };
 
@@ -85,7 +85,7 @@ function SiteService($q, $http, URLService, CacheService, _) {
             }).error(function(data, status, headers, config) {
                 URLService.handleHttpStatus(data, status, headers, config, deferred);
                 delete inProgress[ver];
-            });
+     });
         }
         return deferred.promise;
     };

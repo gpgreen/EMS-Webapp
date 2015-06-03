@@ -101,7 +101,7 @@ To use this on an html page, use
         <mms-element-name data-mms-id="someid"></mms-element-name>
 
 For a more complex template, put your template html in /src/directives/templates and they will be picked up in the compile process, and put into the $templateCache as 'mms/templates/template.html' (see other mms directives for examples or consult the angular docs)
-        
+ 
 There are many more directive options to make complex directives, consult the Angular docs or other mms directives for examples.
 
 If you want to be able to type this into the view editor as the documentation of some element, you'll need to tell the tinymce editor to allow this custom tag. _Go to /src/directives/mmsTinymce.js and add your custom tag to the tinymce option custom_elements_.

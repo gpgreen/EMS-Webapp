@@ -50,7 +50,7 @@ function mmsTinymce(ElementService, ViewService, $modal, $templateCache, $window
             $scope.filter = '';
             $scope.searchText = '';
             $scope.newE = {name: '', documentation: ''};
-            $scope.choose = function(elementId, property, name) {
+     $scope.choose = function(elementId, property, name) {
                 var tag = '<mms-transclude-' + property + ' data-mms-eid="' + elementId + '">[cf:' + name + '.' + property + ']</mms-transclude-' + property + '> ';
                 $modalInstance.close(tag);
             };
@@ -62,7 +62,7 @@ function mmsTinymce(ElementService, ViewService, $modal, $templateCache, $window
                 //growl.info("Searching...");
                 $scope.searchClass = "fa fa-spin fa-spinner";
                 ElementService.search(searchText, false, scope.mmsWs)
-                .then(function(data) {
+         .then(function(data) {
                     $scope.mmsCfElements = data;
                     $scope.searchClass = "";
                 }, function(reason) {
@@ -73,7 +73,7 @@ function mmsTinymce(ElementService, ViewService, $modal, $templateCache, $window
             $scope.makeNew = function() {
                 $scope.proposeClass = "fa fa-spin fa-spinner";
                 ElementService.createElement({name: $scope.newE.name, documentation: $scope.newE.documentation, specialization: {type: 'Element'}}, scope.mmsWs, scope.mmsSite)
-                .then(function(data) {
+         .then(function(data) {
                     $scope.mmsCfElements = [data];
                     $scope.proposeClass = "";
                 }, function(reason) {
@@ -145,7 +145,7 @@ function mmsTinymce(ElementService, ViewService, $modal, $templateCache, $window
             });
         };
 
-        var commentCtrl = function($scope, $modalInstance) {
+ var commentCtrl = function($scope, $modalInstance) {
             $scope.comment = {
                 name: '', 
                 documentation: '', 
@@ -163,14 +163,14 @@ function mmsTinymce(ElementService, ViewService, $modal, $templateCache, $window
                 if (ViewService.getCurrentViewId())
                     $scope.comment.owner = ViewService.getCurrentViewId();
                 ElementService.createElement($scope.comment, scope.mmsWs)
-                .then(function(data) {
+         .then(function(data) {
                     var tag = '<mms-transclude-com data-mms-eid="' + data.sysmlid + '">comment:' + data.creator + '</mms-transclude-com> ';
                     $modalInstance.close(tag);
                 }, function(reason) {
                     growl.error("Comment Error: " + reason.message);
                 }).finally(function() {
                     $scope.oking = false;
-                });
+         });
             };
             $scope.cancel = function() {
                 $modalInstance.dismiss();
@@ -231,7 +231,7 @@ function mmsTinymce(ElementService, ViewService, $modal, $templateCache, $window
         var options = {
             plugins: 'autoresize charmap code fullscreen image link media nonbreaking paste table textcolor searchreplace',
             toolbar: 'bold italic underline strikethrough | subscript superscript blockquote | formatselect | fontsizeselect | forecolor backcolor removeformat | alignleft aligncenter alignright | bullist numlist outdent indent | table | link unlink | image media | charmap searchreplace code | transclude comment vlink normalize | mvleft mvright | undo redo',
-            menubar: false,
+     menubar: false,
             statusbar: true,
             nonbreaking_force_tab: true,
             selector: '#' + attrs.id,
@@ -241,7 +241,7 @@ function mmsTinymce(ElementService, ViewService, $modal, $templateCache, $window
             invalid_elements: 'br,div,font',
             extended_valid_elements: 'mms-site-docs,mms-workspace-docs,mms-diagram-block,mms-view-link,-mms-transclude-doc,-mms-transclude-name,-mms-transclude-com,-mms-transclude-val,-mms-transclude-img,math,maction,maligngroup,malignmark,menclose,merror,mfenced,mfrac,mglyph,mi,mlabeledtr,mlongdiv,mmultiscripts,mn,mo,mover,mpadded,mphantom,mroot,mrow,ms,mscarries,mscarry,msgroup,mstack,msline,mspace,msqrt,msrow,mstyle,msub,msup,msubsup,mtable,mtd,mtext,mtr,munder,munderover',
             custom_elements: 'mms-site-docs,mms-workspace-docs,mms-diagram-block,~mms-view-link,~mms-transclude-doc,~mms-transclude-name,~mms-transclude-com,~mms-transclude-val,~mms-transclude-img,math,maction,maligngroup,malignmark,menclose,merror,mfenced,mfrac,mglyph,mi,mlabeledtr,mlongdiv,mmultiscripts,mn,mo,mover,mpadded,mphantom,mroot,mrow,ms,mscarries,mscarry,msgroup,mstack,msline,mspace,msqrt,msrow,mstyle,msub,msup,msubsup,mtable,mtd,mtext,mtr,munder,munderover',
-            fix_list_elements: true,
+     fix_list_elements: true,
             content_css: 'css/partials/mms.min.css',
             paste_data_images: true,
             skin_url: 'lib/tinymce/skin/lightgray',
@@ -269,7 +269,7 @@ function mmsTinymce(ElementService, ViewService, $modal, $templateCache, $window
                         viewLinkCallback(ed);
                     }
                 });
-                ed.addButton('mvleft', {
+         ed.addButton('mvleft', {
                     title: 'Move Left of Cf',
                     text: '<-',
                     onclick: function() {
@@ -309,7 +309,7 @@ function mmsTinymce(ElementService, ViewService, $modal, $templateCache, $window
                         update();
                     }
                 });
-                ed.on('init', function(args) {
+         ed.on('init', function(args) {
                     ngModelCtrl.$render();
                     ngModelCtrl.$setPristine();
                 });
@@ -325,7 +325,7 @@ function mmsTinymce(ElementService, ViewService, $modal, $templateCache, $window
                     ed.save();
                     update();
                 });
-                ed.on('blur', function(e) {
+         ed.on('blur', function(e) {
                     element.blur();
                 });
                 ed.on('keydown', function(e) {
@@ -344,7 +344,7 @@ function mmsTinymce(ElementService, ViewService, $modal, $templateCache, $window
                         update();
                     };
                 }
-            }
+     }
         };
 
         $timeout(function() {
@@ -386,7 +386,7 @@ function mmsTinymce(ElementService, ViewService, $modal, $templateCache, $window
             mmsWs: '@',
             mmsSite: '@',
             mmsTinymceApi: '='
-        },
+ },
         link: mmsTinymceLink
     };
 }

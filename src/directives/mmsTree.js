@@ -105,7 +105,7 @@ function mmsTree($timeout, $log, $templateCache) {
     var mmsTreeLink = function(scope, element, attrs) {
         scope.search = "";
         
-        if (!attrs.iconExpand)
+ if (!attrs.iconExpand)
             attrs.iconExpand = 'fa fa-caret-right fa-lg fa-fw';
         if (!attrs.iconCollapse)
             attrs.iconCollapse = 'fa fa-caret-down fa-lg fa-fw';
@@ -113,7 +113,7 @@ function mmsTree($timeout, $log, $templateCache) {
             attrs.iconDefault = 'fa fa-file fa-fw';
         if (!attrs.expandLevel)
             attrs.expandLevel = '1';
-        var expand_level = parseInt(attrs.expandLevel, 10);
+ var expand_level = parseInt(attrs.expandLevel, 10);
         if (!angular.isArray(scope.treeData)) {
             $log.warn('treeData is not an array!');
             return;
@@ -140,7 +140,7 @@ function mmsTree($timeout, $log, $templateCache) {
                     parent_branch.children.splice(i,1);
         };
 
-        var get_parent = function(child) {
+ var get_parent = function(child) {
             var parent = null;
             if (child.parent_uid) {
                 for_each_branch(function(b) {
@@ -206,7 +206,7 @@ function mmsTree($timeout, $log, $templateCache) {
             if (scope.initialSelection) {
                 for_each_branch(function(b) {
                     if (b.data.sysmlid === scope.initialSelection || b.data.id === scope.initialSelection)
-                        select_branch(b);
+                 select_branch(b);
                 });
                 on_treeData_change();
             }
@@ -246,7 +246,7 @@ function mmsTree($timeout, $log, $templateCache) {
                     type_icon = "fa fa-spinner fa-spin";
                 else if (scope.options && scope.options.types && scope.options.types[branch.type])
                     type_icon = scope.options.types[branch.type.toLowerCase()];
-                else
+         else
                     type_icon = attrs.iconDefault;
 
                 if (scope.options && scope.options.statuses && scope.options.statuses[branch.status]) {
@@ -272,7 +272,7 @@ function mmsTree($timeout, $log, $templateCache) {
                     if (scope.options.sort) {
                         branch.children.sort(scope.options.sort);
                     }
-                    for (var i = 0, j = 0; i < branch.children.length; i++) {
+             for (var i = 0, j = 0; i < branch.children.length; i++) {
                         var child_visible = visible && branch.expanded;
                         var sectionChar = '.';
                         var sectionValue = '';
@@ -300,7 +300,7 @@ function mmsTree($timeout, $log, $templateCache) {
                 add_branch_to_list(1, '', scope.treeData[i], true);
             }
 
-        };
+ };
         scope.on_treeData_change = on_treeData_change;
         scope.$watch('treeData', on_treeData_change, false);
         scope.$watch('initialSelection', on_initialSelection_change);
@@ -309,7 +309,7 @@ function mmsTree($timeout, $log, $templateCache) {
         if (attrs.initialSelection) {
             for_each_branch(function(b) {
                 if (b.data.sysmlid === attrs.initialSelection || b.data.id === attrs.initialSelection) {
-                    $timeout(function() {
+             $timeout(function() {
                         select_branch(b);
                     });
                 }
@@ -385,7 +385,7 @@ function mmsTree($timeout, $log, $templateCache) {
                 selected_branch = null;
             };
 
-            tree.get_parent_branch = get_parent;
+     tree.get_parent_branch = get_parent;
             tree.select_branch = select_branch;
             tree.get_children = function(b) {
                 return b.children;
@@ -427,7 +427,7 @@ function mmsTree($timeout, $log, $templateCache) {
                 on_treeData_change();
             };
 
-            tree.add_root_branch = function(new_branch) {
+     tree.add_root_branch = function(new_branch) {
                 tree.add_branch(null, new_branch);
             };
             /**
@@ -609,14 +609,14 @@ function mmsTree($timeout, $log, $templateCache) {
             tree.sort_branch = function(b, sortFunction) {
                 b.children.sort(sortFunction);
             };
-        }
+ }
     };
 
     return {
         restrict: 'E',
         template: $templateCache.get('mms/templates/mmsTree.html'),
         // replace: true,
-        scope: {
+ scope: {
             treeData: '=',
             sectionNumbering: '=',
             onSelect: '&',

@@ -74,7 +74,7 @@ angular.module('mms.directives')
  *      element spec for it would be shown, this will not use mms services to get the element
  */
 function mmsSpec(ElementService, WorkspaceService, ConfigService, $compile, $templateCache, $modal, $q, growl, _) {
-    //var readTemplate = $templateCache.get('mms/templates/mmsSpec.html');
+ar readTemplate = $templateCache.get('mms/templates/mmsSpec.html');
     //var editTemplate = $templateCache.get('mms/templates/mmsSpecEdit.html');
     var template = $templateCache.get('mms/templates/mmsSpec.html');
 
@@ -88,14 +88,14 @@ function mmsSpec(ElementService, WorkspaceService, ConfigService, $compile, $tem
                 scope.values = scope.element.specialization.value;
             if (scope.element.specialization.type === 'Constraint')
                 scope.value = scope.element.specialization.specification;
-            scope.editable = false;
+     scope.editable = false;
             //element.empty();
             //element.append(readTemplate);
             //$compile(element.contents())(scope);
             return;
         }
         scope.tinymceApi = {};
-        /**
+ /**
          * @ngdoc function
          * @name mms.directives.directive:mmsSpec#changeElement
          * @methodOf mms.directives.directive:mmsSpec
@@ -145,7 +145,7 @@ function mmsSpec(ElementService, WorkspaceService, ConfigService, $compile, $tem
                     });
                 });
             } else {
-            ElementService.getElement(scope.mmsEid, false, scope.mmsWs, scope.mmsVersion)
+     ElementService.getElement(scope.mmsEid, false, scope.mmsWs, scope.mmsVersion)
             .then(function(data) {
                 //element.empty();
                 //var template = null;
@@ -154,7 +154,7 @@ function mmsSpec(ElementService, WorkspaceService, ConfigService, $compile, $tem
                     scope.values = scope.element.specialization.value;
                 if (scope.element.specialization.type === 'Constraint')
                     scope.value = scope.element.specialization.specification;
-                if (scope.mmsEditField === 'none' || 
+         if (scope.mmsEditField === 'none' || 
                         !scope.element.editable || 
                         (scope.mmsVersion !== 'latest' && scope.mmsVersion)) {
                     scope.editable = false;
@@ -181,7 +181,7 @@ function mmsSpec(ElementService, WorkspaceService, ConfigService, $compile, $tem
                         if (scope.edit.specialization.type === 'Constraint' && scope.edit.specialization.specification) {
                             scope.editValue = scope.edit.specialization.specification;
                         }
-                        //element.append(template);
+                 //element.append(template);
                         //$compile(element.contents())(scope); 
                     });
                 }
@@ -211,7 +211,7 @@ function mmsSpec(ElementService, WorkspaceService, ConfigService, $compile, $tem
                 scope.edit.name = scope.element.name;
                 scope.edit.description = scope.element.description;
             } else {
-            scope.edit.name = scope.element.name;
+     scope.edit.name = scope.element.name;
             scope.edit.documentation = scope.element.documentation;
             if (scope.edit.specialization.type === 'Property' && angular.isArray(scope.edit.specialization.value)) {
                 scope.edit.specialization.value = _.cloneDeep(scope.element.specialization.value);
@@ -222,7 +222,7 @@ function mmsSpec(ElementService, WorkspaceService, ConfigService, $compile, $tem
                 scope.editValue = scope.edit.specialization.specification;
             }
             }
-        };
+ };
         
         var conflictCtrl = function($scope, $modalInstance) {
             $scope.ok = function() {
@@ -276,7 +276,7 @@ function mmsSpec(ElementService, WorkspaceService, ConfigService, $compile, $tem
                     deferred.reject({type: 'error', message: reason.message});
                 });
             } else {
-            ElementService.updateElement(scope.edit, scope.mmsWs)
+     ElementService.updateElement(scope.edit, scope.mmsWs)
             .then(function(data) {
                 deferred.resolve(data);
                 //growl.success("Save successful");
@@ -310,7 +310,7 @@ function mmsSpec(ElementService, WorkspaceService, ConfigService, $compile, $tem
                                     currentEdit.documentation = data.documentation + '<p>MERGE</p>' + currentEdit.documentation;
                                 currentEdit.read = data.read;
                                 currentEdit.modified = data.modified;
-                                //growl.info("Element name and doc merged");
+                         //growl.info("Element name and doc merged");
                                 deferred.reject({type: 'info', message: 'Element name and doc merged'});
                             }, function(reason2) {
                                 //growl.error("Merge error: " + reason2.message);
@@ -319,7 +319,7 @@ function mmsSpec(ElementService, WorkspaceService, ConfigService, $compile, $tem
                         } else if (choice === 'force') {
                             scope.edit.read = scope.latest.read;
                             scope.edit.modified = scope.latest.modified;
-                            scope.save().then(function(resolved) {
+                     scope.save().then(function(resolved) {
                                 deferred.resolve(resolved);
                             }, function(error) {
                                 deferred.reject(error);
@@ -333,7 +333,7 @@ function mmsSpec(ElementService, WorkspaceService, ConfigService, $compile, $tem
                 }
             });
             }
-            return deferred.promise;
+     return deferred.promise;
         };
 
         scope.hasHtml = function(s) {
@@ -365,7 +365,7 @@ function mmsSpec(ElementService, WorkspaceService, ConfigService, $compile, $tem
                 !angular.equals(scope.edit.specialization.value, scope.element.specialization.value))
                 return true;
             if (scope.edit.description !== scope.element.description)
-                return true;
+         return true;
             return false;
         };
 
@@ -466,7 +466,7 @@ function mmsSpec(ElementService, WorkspaceService, ConfigService, $compile, $tem
                 if (scope.edit && scope.tinymceApi.save)
                     scope.tinymceApi.save();
             };
-        }
+ }
     };
 
     return {
@@ -483,7 +483,7 @@ function mmsSpec(ElementService, WorkspaceService, ConfigService, $compile, $tem
             mmsSpecApi: '=',
             mmsViewEdit: '=',
             mmsType: '@'
-        },
+ },
         link: mmsSpecLink
     };
 }

@@ -13,7 +13,7 @@ function mmsViewTable($compile, $timeout, $templateCache) {
             if (scope.tableLimit < scope.table.body.length) {
                 scope.tableLimit += 25;
                 $timeout(addLimit, 100);
-            }
+     }
         };
 
         element.append(template);
@@ -21,7 +21,7 @@ function mmsViewTable($compile, $timeout, $templateCache) {
             $compile(element.contents())(scope);
             addLimit();
             }, 100);
-    };
+
 
     return {
         restrict: 'E',

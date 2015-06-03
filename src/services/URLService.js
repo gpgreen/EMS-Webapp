@@ -70,7 +70,7 @@ function urlService(baseUrl) {
      */
     var getConfigSnapshotsURL = function(id, workspace) {
         return root + "/workspaces/" + workspace +
-                      "/configurations/" + id +
+               "/configurations/" + id +
                       "/snapshots";                
     };
 
@@ -107,7 +107,7 @@ function urlService(baseUrl) {
      */
     var getConfigsURL = function(workspace) {
         return root + "/workspaces/" + workspace +
-                      "/configurations";
+               "/configurations";
     };
 
     /**
@@ -144,7 +144,7 @@ function urlService(baseUrl) {
      */
     var getConfigURL = function(id, workspace) {
         return root + "/workspaces/" + workspace + 
-                      "/configurations/" + id;
+               "/configurations/" + id;
     };
 
     /**
@@ -164,7 +164,7 @@ function urlService(baseUrl) {
                       "/sites/" + site + 
                       "/products";
         return addVersion(r, version);
-    };
+
 
     /**
      * @ngdoc method
@@ -242,7 +242,7 @@ function urlService(baseUrl) {
     var getDocumentViewsURL = function(id, workspace, version, simple) {
         //var r = root + "/javawebscripts/products/" + id + "/views";
         var r = root + "/workspaces/" + workspace + "/products/" + id + "/views";
-        r = addVersion(r, version);
+ r = addVersion(r, version);
         if (simple) {
             if (r.indexOf('?') > 0)
                 r += '&simple=true';
@@ -268,7 +268,7 @@ function urlService(baseUrl) {
     var getViewElementsURL = function(id, workspace, version) {
         //var r = root + "/javawebscripts/views/" + id + "/elements";
         var r = root + "/workspaces/" + workspace + "/views/" + id + "/elements";
-        return addVersion(r, version);
+ return addVersion(r, version);
     };
 
     /**
@@ -307,7 +307,7 @@ function urlService(baseUrl) {
         return root + '/workspaces/' + workspace + '/sites/' + site + '/elements';
     };
 
-    /**
+
      * @ngdoc method
      * @name mms.URLService#handleHttpStatus
      * @methodOf mms.URLService
@@ -343,7 +343,7 @@ function urlService(baseUrl) {
             result.message = "Conflict";
         else if (status === 400)
             result.message = "Bad Request";
-        else
+ else
             result.message = "Failed";
         deferred.reject(result);
     };
@@ -361,7 +361,7 @@ function urlService(baseUrl) {
     var getSitesURL = function(workspace, version) {
         var r = root + '/workspaces/' + workspace + '/sites';
         return addVersion(r, version);
-    };
+
 
     /**
      * @ngdoc method
@@ -377,7 +377,7 @@ function urlService(baseUrl) {
      */
     var getElementSearchURL = function(query, workspace) {
         return root + '/workspaces/' + workspace + '/search?keyword=' + query;
-    };
+
 
     var getWorkspacesURL = function() {
         return root + '/workspaces';
@@ -404,7 +404,7 @@ function urlService(baseUrl) {
     };
 
 
-    var addVersion = function(url, version) {
+ addVersion = function(url, version) {
         if (version === 'latest')
             return url;
         if (isTimestamp(version))
@@ -420,7 +420,7 @@ function urlService(baseUrl) {
         getElementVersionsURL: getElementVersionsURL,
         getPostElementsURL: getPostElementsURL,
         getPostElementsWithSiteURL: getPostElementsWithSiteURL,
-        handleHttpStatus: handleHttpStatus,
+ handleHttpStatus: handleHttpStatus,
         getSitesURL: getSitesURL,
         getElementSearchURL: getElementSearchURL,
         getImageURL: getImageURL,
@@ -429,12 +429,12 @@ function urlService(baseUrl) {
         getSiteProductsURL: getSiteProductsURL,
         getConfigURL: getConfigURL,
         getConfigsURL: getConfigsURL,
-        getConfigProductsURL : getConfigProductsURL,
+ getConfigProductsURL : getConfigProductsURL,
         getDocumentViewsURL: getDocumentViewsURL,
         getViewElementsURL: getViewElementsURL,
         getWsDiffURL: getWsDiffURL,
         getPostWsDiffURL: getPostWsDiffURL,
-        getWorkspacesURL: getWorkspacesURL,
+ getWorkspacesURL: getWorkspacesURL,
         getWorkspaceURL: getWorkspaceURL,
         isTimestamp: isTimestamp
     };

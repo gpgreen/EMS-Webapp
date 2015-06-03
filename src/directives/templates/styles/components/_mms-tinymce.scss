@@ -11,7 +11,7 @@
   table, .mce-item-table {
 
     @extend .content-table;
-    font-family: $font-family-sans-serif;
+t-family: $font-family-sans-serif;
 
     td {
       font-size: 14px;
@@ -22,7 +22,7 @@
   mms-transclude-doc,
   mms-transclude-val,
   mms-view-link {
-    background-color: $light_blue;
+kground-color: $light_blue;
     margin-top: 0;
     margin-bottom: 0 !important;
     padding: 3px !important;

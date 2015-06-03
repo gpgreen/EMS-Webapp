@@ -36,7 +36,7 @@ angular.module('mms.directives')
  * @param {string} mmsResponsive True to display a responsive sliding pane on small browser, false otherwise
  */
 function mmsNav(SiteService, WorkspaceService, ConfigService, $templateCache, growl) {
-    var template = $templateCache.get('mms/templates/mmsNav.html');
+ template = $templateCache.get('mms/templates/mmsNav.html');
 
     var mmsNavLink = function(scope, element, attrs) {
         scope.obj = {
@@ -46,7 +46,7 @@ function mmsNav(SiteService, WorkspaceService, ConfigService, $templateCache, gr
         var catNames = [];
         var sites = {};
         
-        //Resets catagory and sites accordions
+ //Resets catagory and sites accordions
         scope.reset = function(){
             for(var i = 0; i < catNames.length; i++){
                 var str = catNames[i];
@@ -192,7 +192,7 @@ function mmsNav(SiteService, WorkspaceService, ConfigService, $templateCache, gr
             scope.config = 'latest';
         } */
 
-        SiteService.getSites()
+ SiteService.getSites()
         .then(function(data) {
             // var sites = {};
             //var catNames = [];
@@ -203,7 +203,7 @@ function mmsNav(SiteService, WorkspaceService, ConfigService, $templateCache, gr
                     scope.siteTitle = site.name;
                 // TODO: Replace with .parent
                 site.categories = ["Uncategorized"];
-                if (site.categories.length === 0)
+         if (site.categories.length === 0)
                     site.categories.push("Uncategorized");
                 for (var j = 0; j < site.categories.length; j++) {
                     var cat = site.categories[j];
@@ -236,7 +236,7 @@ function mmsNav(SiteService, WorkspaceService, ConfigService, $templateCache, gr
             config: '=mmsConfig', //config id
             snapshot: '@mmsSnapshotTag', // snapshot titles (before tags - need to be backward compatible), if any
             showTag: '@mmsShowTag'
-        },
+ },
         link: mmsNavLink
     };
 }

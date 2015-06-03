@@ -89,7 +89,7 @@ function CacheService(_) {
             result = cache[realkey];
             delete cache[realkey];
         }
-        return result;
+ return result;
     };
 
     /**

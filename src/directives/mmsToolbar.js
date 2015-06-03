@@ -75,7 +75,7 @@ function mmsToolbar($templateCache) {
 
             api.setIcon = function (id, icon) {
                 $scope.buttons.forEach(function(button) {
-                    if (button.id === id)
+             if (button.id === id)
                         button.icon = icon;
                 });
             };
@@ -171,7 +171,7 @@ function mmsToolbar($templateCache) {
         restrict: 'E', 
         template: template,
         controller: ['$scope', mmsToolbarCtrl],
-        link: mmsToolbarLink,
+ link: mmsToolbarLink,
         scope: {
             buttons: '=',
             mmsTbApi: '=',

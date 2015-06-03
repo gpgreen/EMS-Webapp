@@ -18,7 +18,7 @@ angular.module('mms')
  * Tags are timepoints of a workspace and signifies a workspace at a particular 
  * timestamp. When a tag is created, snapshots of all products (docs) in the workspace are
  * also created.
- */
+
 
  //['snapshots', ws, ssid]
  //['products', ws, id, 'snapshots']
@@ -35,7 +35,7 @@ function ConfigService($q, $http, URLService, CacheService, UtilsService, _) {
      * @description
      * Get configurations in a worksace
      *
-     * @param {string} [workspace=master] Workspace name
+@param {string} [workspace=master] Workspace name
      * @param {boolean} [update=false] update from server
      * @returns {Promise} Promise would be resolved with array of configuration objects
      */
@@ -46,13 +46,13 @@ function ConfigService($q, $http, URLService, CacheService, UtilsService, _) {
             return inProgress[inProgressKey];
         var deferred = $q.defer();
         var cacheKey = ['workspaces', n.ws, 'configs'];
-        if (CacheService.exists(cacheKey) && !n.update) {
+ if (CacheService.exists(cacheKey) && !n.update) {
             deferred.resolve(CacheService.get(cacheKey));
             return deferred.promise;
         }
         inProgress[inProgressKey] = deferred.promise;
         $http.get(URLService.getConfigsURL(n.ws))
-        .success(function(data, status, headers, config) {
+ .success(function(data, status, headers, config) {
             CacheService.put(cacheKey, data.configurations, false, function(val, k) {
                 return {key: ['configs', n.ws, val.id], value: val, merge: true};
             });
@@ -61,12 +61,12 @@ function ConfigService($q, $http, URLService, CacheService, UtilsService, _) {
         }).error(function(data, status, headers, config) {
             URLService.handleHttpStatus(data, status, headers, config, deferred);
             delete inProgress[inProgressKey];
-        });
+ });
         return deferred.promise;
     };
 
     var getConfig = function(id, workspace, update) {
-        var n = normalize(update, workspace);
+ var n = normalize(update, workspace);
         var deferred = $q.defer();
         var cacheKey = ['configs', n.ws, id];
         if (CacheService.exists(cacheKey) && !n.update) {
@@ -83,7 +83,7 @@ function ConfigService($q, $http, URLService, CacheService, UtilsService, _) {
             deferred.reject(reason);
         });
         /*$http.get(URLService.getConfigURL(id, n.ws))
-        .success(function(data, status, headers, config) {
+ .success(function(data, status, headers, config) {
             deferred.resolve(CacheService.put(cacheKey, data.configurations[0], true));
         }).error(function(data, status, headers, config) {
             URLService.handleHttpStatus(data, status, headers, config, deferred);
@@ -110,7 +110,7 @@ function ConfigService($q, $http, URLService, CacheService, UtilsService, _) {
     };
 
     var getConfigSnapshots = function(id, workspace, update) {
-        var n = normalize(update, workspace);
+ var n = normalize(update, workspace);
         var deferred = $q.defer();
         var cacheKey = ['configs', n.ws, id, 'snapshots'];
         if (CacheService.exists(cacheKey) && !n.update) {
@@ -118,7 +118,7 @@ function ConfigService($q, $http, URLService, CacheService, UtilsService, _) {
             return deferred.promise;
         }
         $http.get(URLService.getConfigSnapshotsURL(id, n.ws))
-        .success(function(data, status, headers, config) {
+ .success(function(data, status, headers, config) {
             CacheService.put(cacheKey, data.snapshots, false, function(val, k) {
                 return {key: ['snapshots', n.ws, val.id], value: val, merge: true};
             });
@@ -128,7 +128,7 @@ function ConfigService($q, $http, URLService, CacheService, UtilsService, _) {
         });
         return deferred.promise;
     };
-    /**
+
      * @ngdoc method
      * @name mms.ConfigService#createConfig
      * @methodOf mms.ConfigService
@@ -154,7 +154,7 @@ function ConfigService($q, $http, URLService, CacheService, UtilsService, _) {
                 if (CacheService.exists(['workspaces', n.ws, 'configs'])) {
                     CacheService.get(['workspaces', n.ws, 'configs']).push(data);
                 }
-            }
+     }
         }).error(function(data, status, headers, config) {
             URLService.handleHttpStatus(data, status, headers, config, deferred);
         });
@@ -175,7 +175,7 @@ function ConfigService($q, $http, URLService, CacheService, UtilsService, _) {
                     wscache.splice(i, 1);
             }
             deferred.resolve(data);
-        }).error(function(data, status, headers, config) {
+ }).error(function(data, status, headers, config) {
             URLService.handleHttpStatus(data, status, headers, config, deferred);
         });
         return deferred.promise;
@@ -208,12 +208,12 @@ function ConfigService($q, $http, URLService, CacheService, UtilsService, _) {
             CacheService.put(cacheKey, data.snapshots, false, function(val, k) {
                 return {key: ['snapshots', n.ws, val.id], value: val, merge: true};
             });
-            deferred.resolve(CacheService.get(cacheKey));
+     deferred.resolve(CacheService.get(cacheKey));
         }).error(function(data, status, headers, config) {
             URLService.handleHttpStatus(data, status, headers, config, deferred);
         });
         return deferred.promise;
-    };
+
 
     var createSnapshotArtifact = function(snapshot, site, workspace){
         var n = normalize(null, workspace);
@@ -245,5 +245,5 @@ function ConfigService($q, $http, URLService, CacheService, UtilsService, _) {
         createSnapshotArtifact: createSnapshotArtifact,
         update : update,
         getProductSnapshots: getProductSnapshots,
-    };
+
 }

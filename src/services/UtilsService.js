@@ -31,7 +31,7 @@ function UtilsService(_) {
         if (! elem.name) {
             elem.name = '';
         }
-        if (elem.hasOwnProperty('specialization')) {
+ if (elem.hasOwnProperty('specialization')) {
             if (elem.specialization.type === 'Property') {
                 var spec = elem.specialization;
                 if (!_.isArray(spec.value))
@@ -153,5 +153,5 @@ function UtilsService(_) {
         normalize: normalize,
         makeElementKey: makeElementKey,
         buildTreeHierarchy: buildTreeHierarchy
-    };
+
 }

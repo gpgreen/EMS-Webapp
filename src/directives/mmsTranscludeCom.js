@@ -44,7 +44,7 @@ function mmsTranscludeCom(ElementService, UtilsService, $log, $compile, growl) {
             if (mmsViewCtrl) {
                 mmsViewCtrl.elementTranscluded(scope.element, 'Comment');
             }
-        };
+ };
 
         scope.$watch('mmsEid', function(newVal, oldVal) {
             if (!newVal || (newVal === oldVal && processed))
@@ -71,7 +71,7 @@ function mmsTranscludeCom(ElementService, UtilsService, $log, $compile, growl) {
                 scope.$watch('element.documentation', recompile);
             }, function(reason) {
                 element.html('<span class="error">comment ' + newVal + ' not found</span>');
-                growl.error('Cf Comment Error: ' + reason.message + ': ' + scope.mmsEid);
+         growl.error('Cf Comment Error: ' + reason.message + ': ' + scope.mmsEid);
             });
         });
     };

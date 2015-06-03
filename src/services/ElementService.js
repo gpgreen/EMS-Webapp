@@ -325,7 +325,7 @@ function ElementService($q, $http, URLService, UtilsService, CacheService, _) {
         if (!elem.hasOwnProperty('sysmlid'))
             deferred.reject('Element id not found, create element first!');
         else {
-            var n = normalize(elem.sysmlid, null, workspace, null);
+     var n = normalize(elem.sysmlid, null, workspace, null);
             $http.post(URLService.getPostElementsURL(n.ws), {'elements': [elem]})
             .success(function(data, status, headers, config) {
                 var resp = CacheService.put(n.cacheKey, UtilsService.cleanElement(data.elements[0]), true);
@@ -345,7 +345,7 @@ function ElementService($q, $http, URLService, UtilsService, CacheService, _) {
                     var server = _.cloneDeep(data.elements[0]);
                     var newread = server.read;
                     var newmodified = server.modified;
-                    delete server.modified;
+             delete server.modified;
                     delete server.read;
                     delete server.creator;
                     UtilsService.cleanElement(server);
@@ -361,7 +361,7 @@ function ElementService($q, $http, URLService, UtilsService, CacheService, _) {
                         if (angular.equals(server, current)) {
                             elem.read = newread;
                             elem.modified = newmodified;
-                            updateElement(elem, workspace)
+                     updateElement(elem, workspace)
                             .then(function(good){
                                 deferred.resolve(good);
                             }, function(reason) {
@@ -419,7 +419,7 @@ function ElementService($q, $http, URLService, UtilsService, CacheService, _) {
             URLService.handleHttpStatus(data, status, headers, config, deferred);
         });
         return deferred.promise;
-    };
+
 
     /**
      * @ngdoc method
@@ -481,7 +481,7 @@ function ElementService($q, $http, URLService, UtilsService, CacheService, _) {
         if (site)
             url = URLService.getPostElementsWithSiteURL(n.ws, site);
         $http.post(url, {'elements': [elem]})
-        .success(function(data, status, headers, config) {
+ .success(function(data, status, headers, config) {
             var resp = data.elements[0];
             var key = UtilsService.makeElementKey(resp.sysmlid, n.ws, 'latest');
             deferred.resolve(CacheService.put(key, UtilsService.cleanElement(resp), true));
@@ -559,7 +559,7 @@ function ElementService($q, $http, URLService, UtilsService, CacheService, _) {
 
     /**
      * @ngdoc method
-     * @name mms.ElementService#isDirty
+@name mms.ElementService#isDirty
      * @methodOf mms.ElementService
      * 
      * @description
@@ -672,7 +672,7 @@ function ElementService($q, $http, URLService, UtilsService, CacheService, _) {
         return $q.all(promises);
     };
 
-    var normalize = function(id, update, workspace, version, edit) {
+ normalize = function(id, update, workspace, version, edit) {
         var res = UtilsService.normalize({update: update, workspace: workspace, version: version});
         res.cacheKey = UtilsService.makeElementKey(id, res.ws, res.ver, edit);
         return res;
@@ -693,7 +693,7 @@ function ElementService($q, $http, URLService, UtilsService, CacheService, _) {
         deleteElement: deleteElement,
         deleteElements: deleteElements,
         isCacheOutdated: isCacheOutdated,
-        isDirty: isDirty,
+ isDirty: isDirty,
         search: search
     };
 }

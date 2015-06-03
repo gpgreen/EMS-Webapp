@@ -222,7 +222,7 @@ function ViewService($q, $http, URLService, ElementService, UtilsService, CacheS
             var clone = {};
             clone.sysmlid = data.sysmlid;
             //clone.read = data.read;
-            clone.specialization = _.cloneDeep(data.specialization);
+     clone.specialization = _.cloneDeep(data.specialization);
             delete clone.specialization.contains;
             for (var i = 0; i < clone.specialization.view2view.length; i++) {
                 if (clone.specialization.view2view[i].id === parentViewId) {
@@ -232,7 +232,7 @@ function ViewService($q, $http, URLService, ElementService, UtilsService, CacheS
             } 
             clone.specialization.view2view.push({id: viewId, childrenViews: []});
             updateDocument(clone, ws)
-            .then(function(data2) {
+     .then(function(data2) {
                 if (CacheService.exists(docViewsCacheKey) && viewOb)
                     CacheService.get(docViewsCacheKey).push(viewOb);
                 deferred.resolve(data2);
@@ -241,7 +241,7 @@ function ViewService($q, $http, URLService, ElementService, UtilsService, CacheS
                     clone.read = reason.data.elements[0].read;
                     clone.modified = reason.data.elements[0].modified;
                     updateDocument(clone, ws)
-                    .then(function(data3) {
+             .then(function(data3) {
                         if (CacheService.exists(docViewsCacheKey) && viewOb)
                             CacheService.get(docViewsCacheKey).push(viewOb);
                         deferred.resolve(data3);
@@ -358,7 +358,7 @@ function ViewService($q, $http, URLService, ElementService, UtilsService, CacheS
         return deferred.promise;
     };
 
-    /**
+
      * @ngdoc method
      * @name mms.ViewService#getSiteDocuments
      * @methodOf mms.ViewService
@@ -380,7 +380,7 @@ function ViewService($q, $http, URLService, ElementService, UtilsService, CacheS
             deferred.resolve(CacheService.get(cacheKey));
         else {
             ElementService.getGenericElements(url, 'products', n.update, n.ws, n.ver).
-            then(function(data) {              
+     then(function(data) {              
                 deferred.resolve(CacheService.put(cacheKey, data, false));
             }, function(reason) {
                 deferred.reject(reason);
@@ -419,7 +419,7 @@ function ViewService($q, $http, URLService, ElementService, UtilsService, CacheS
         getViewElements: getViewElements,
         createView: createView,
         createDocument: createDocument,
-        addViewToDocument: addViewToDocument,
+ addViewToDocument: addViewToDocument,
         getDocumentViews: getDocumentViews,
         getSiteDocuments: getSiteDocuments,
         setCurrentViewId: setCurrentViewId,

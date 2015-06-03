@@ -46,7 +46,7 @@ function mmsTranscludeName(ElementService, $compile, growl) {
                     version = viewVersion.version;
             }
             scope.version = version ? version : 'latest';
-            ElementService.getElement(scope.mmsEid, false, ws, version)
+     ElementService.getElement(scope.mmsEid, false, ws, version)
             .then(function(data) {
                 scope.element = data;
                 if (mmsViewCtrl) {
@@ -54,7 +54,7 @@ function mmsTranscludeName(ElementService, $compile, growl) {
                 }
             }, function(reason) {
                 element.html('<span class="error">name cf ' + newVal + ' not found</span>');
-                growl.error('Cf Name Error: ' + reason.message + ': ' + scope.mmsEid);
+         growl.error('Cf Name Error: ' + reason.message + ': ' + scope.mmsEid);
             });
         });
 
@@ -68,7 +68,7 @@ function mmsTranscludeName(ElementService, $compile, growl) {
     return {
         restrict: 'E',
         template: '<span ng-if="element.name">{{element.name}}</span><span ng-if="!element.name" ng-class="{placeholder: version!=\'latest\'}">(no name)</span>',
-        scope: {
+ scope: {
             mmsEid: '@',
             mmsWs: '@',
             mmsVersion: '@'

@@ -69,13 +69,13 @@ function mmsView(ViewService, $templateCache, growl) {
             }
             if ($scope.mmsTranscluded)
                 $scope.mmsTranscluded({element: elem, type: type});
-        };
+ };
         this.getWsAndVersion = function() {
             return {
                 workspace: $scope.mmsWs, 
                 version: $scope.mmsVersion,
                 tag: $scope.mmsTag
-            };
+     };
         };
     };
 
@@ -102,7 +102,7 @@ function mmsView(ViewService, $templateCache, growl) {
                         }
                     }
                 }
-                ViewService.getViewElements(scope.mmsVid, false, scope.mmsWs, scope.mmsVersion)
+         ViewService.getViewElements(scope.mmsVid, false, scope.mmsWs, scope.mmsVersion)
                 .then(function(data2) {
                     scope.view = data;
                     scope.modified = data.modified;
@@ -188,7 +188,7 @@ function mmsView(ViewService, $templateCache, growl) {
             if (api.init) {
                 api.init(api);
             }
-        }
+ }
     };
 
     return {
@@ -204,7 +204,7 @@ function mmsView(ViewService, $templateCache, growl) {
             mmsCfClicked: '&',
             mmsViewApi: '=',
             mmsTranscluded: '&'
-        },
+ },
         controller: ['$scope', mmsViewCtrl],
         link: mmsViewLink
     };

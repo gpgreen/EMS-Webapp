@@ -45,7 +45,7 @@ function mmsTranscludeDoc(ElementService, UtilsService, $compile, $log, growl) {
             var doc = scope.element.documentation;
             if (!doc)
                 doc = '<p ng-class="{placeholder: version!=\'latest\'}">(no documentation)</p>';
-            element.append(doc);
+     element.append(doc);
             $compile(element.contents())(scope); 
             if (mmsViewCtrl) {
                 mmsViewCtrl.elementTranscluded(scope.element);
@@ -71,14 +71,14 @@ function mmsTranscludeDoc(ElementService, UtilsService, $compile, $log, growl) {
                     version = viewVersion.version;
             }
             scope.version = version ? version : 'latest';
-            ElementService.getElement(scope.mmsEid, false, ws, version)
+     ElementService.getElement(scope.mmsEid, false, ws, version)
             .then(function(data) {
                 scope.element = data;
                 recompile();
                 scope.$watch('element.documentation', recompile);
             }, function(reason) {
                 element.html('<span class="error">doc cf ' + newVal + ' not found</span>');
-                growl.error('Cf Doc Error: ' + reason.message + ': ' + scope.mmsEid);
+         growl.error('Cf Doc Error: ' + reason.message + ': ' + scope.mmsEid);
             });
         });
     };
