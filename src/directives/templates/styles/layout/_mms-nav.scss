@@ -121,7 +121,7 @@ mms-nav {
   }
 
   /*.logout-btn {
-gin-left: 1em;
+    margin-left: 1em;
     padding-left: 0 !important;
   }
 
@@ -142,7 +142,7 @@ gin-left: 1em;
     }
     margin-left: 1em;
     padding-left: 0 !important;
-
+  }
 
   .goto.dropdown ul { 
     width: 100%;
@@ -423,7 +423,7 @@ gin-left: 1em;
         }
     }  
     
-{
+    li {
       position: relative;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       top: 5em;

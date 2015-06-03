@@ -4,7 +4,7 @@
   "repository": "https://mbse.jpl.nasa.gov/stash/projects/MBEE/repos/angular-mms",
   "devDependencies": {
     "grunt-artifactory-artifact": "~0.6.2",
-unt-bower-install-simple": "1.0.3",
+    "grunt-bower-install-simple": "1.0.3",
     "grunt-connect-proxy": "0.1.10",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-concat": "~0.5.0",
@@ -26,6 +26,6 @@ unt-bower-install-simple": "1.0.3",
     "karma-jasmine": "~0.2.2",
     "karma-junit-reporter": "~0.2.2",
     "karma-phantomjs-launcher": "~0.1.4",
-antomjs": "~1.9.10"
+    "phantomjs": "~1.9.10"
   }
 }

@@ -18,7 +18,7 @@ angular.module('mms')
  * Tags are timepoints of a workspace and signifies a workspace at a particular 
  * timestamp. When a tag is created, snapshots of all products (docs) in the workspace are
  * also created.
-
+ */
 
  //['snapshots', ws, ssid]
  //['products', ws, id, 'snapshots']
@@ -35,7 +35,7 @@ function ConfigService($q, $http, URLService, CacheService, UtilsService, _) {
      * @description
      * Get configurations in a worksace
      *
-@param {string} [workspace=master] Workspace name
+     * @param {string} [workspace=master] Workspace name
      * @param {boolean} [update=false] update from server
      * @returns {Promise} Promise would be resolved with array of configuration objects
      */
@@ -128,7 +128,7 @@ function ConfigService($q, $http, URLService, CacheService, UtilsService, _) {
         });
         return deferred.promise;
     };
-
+    /**
      * @ngdoc method
      * @name mms.ConfigService#createConfig
      * @methodOf mms.ConfigService
@@ -213,7 +213,7 @@ function ConfigService($q, $http, URLService, CacheService, UtilsService, _) {
             URLService.handleHttpStatus(data, status, headers, config, deferred);
         });
         return deferred.promise;
-
+    };
 
     var createSnapshotArtifact = function(snapshot, site, workspace){
         var n = normalize(null, workspace);
@@ -245,5 +245,5 @@ function ConfigService($q, $http, URLService, CacheService, UtilsService, _) {
         createSnapshotArtifact: createSnapshotArtifact,
         update : update,
         getProductSnapshots: getProductSnapshots,
-
+    };
 }

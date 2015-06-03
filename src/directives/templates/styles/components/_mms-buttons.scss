@@ -23,7 +23,7 @@
 .btn-primary {
   background-color: $base_blue;
 
-er, &:active, &:focus {
+  &:hover, &:active, &:focus {
     background-color: $base_blue;
   }
 }
@@ -31,7 +31,7 @@ er, &:active, &:focus {
 .btn-success {
   background-color: $green;
 
-er, &:active, &:focus {
+  &:hover, &:active, &:focus {
     background-color: $green;
   }
 }
@@ -41,7 +41,7 @@ er, &:active, &:focus {
   
   &:hover, &:active, &:focus {
     background-color: $secondary_red;
-
+  }
 }
 
 .view-tools {

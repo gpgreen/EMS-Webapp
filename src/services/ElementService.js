@@ -419,7 +419,7 @@ function ElementService($q, $http, URLService, UtilsService, CacheService, _) {
             URLService.handleHttpStatus(data, status, headers, config, deferred);
         });
         return deferred.promise;
-
+    };
 
     /**
      * @ngdoc method
@@ -559,7 +559,7 @@ function ElementService($q, $http, URLService, UtilsService, CacheService, _) {
 
     /**
      * @ngdoc method
-@name mms.ElementService#isDirty
+     * @name mms.ElementService#isDirty
      * @methodOf mms.ElementService
      * 
      * @description
@@ -672,7 +672,7 @@ function ElementService($q, $http, URLService, UtilsService, CacheService, _) {
         return $q.all(promises);
     };
 
- normalize = function(id, update, workspace, version, edit) {
+    var normalize = function(id, update, workspace, version, edit) {
         var res = UtilsService.normalize({update: update, workspace: workspace, version: version});
         res.cacheKey = UtilsService.makeElementKey(id, res.ws, res.ver, edit);
         return res;

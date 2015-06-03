@@ -175,6 +175,6 @@ function WorkspaceService($http, $q, URLService, ElementService, CacheService, _
         deleteWorkspace: deleteWorkspace,
         create: create,
         update: update
-
+    };
 
 }

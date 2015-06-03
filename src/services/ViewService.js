@@ -358,7 +358,7 @@ function ViewService($q, $http, URLService, ElementService, UtilsService, CacheS
         return deferred.promise;
     };
 
-
+    /**
      * @ngdoc method
      * @name mms.ViewService#getSiteDocuments
      * @methodOf mms.ViewService

@@ -164,7 +164,7 @@ function urlService(baseUrl) {
                       "/sites/" + site + 
                       "/products";
         return addVersion(r, version);
-
+    };
 
     /**
      * @ngdoc method
@@ -307,7 +307,7 @@ function urlService(baseUrl) {
         return root + '/workspaces/' + workspace + '/sites/' + site + '/elements';
     };
 
-
+    /**
      * @ngdoc method
      * @name mms.URLService#handleHttpStatus
      * @methodOf mms.URLService
@@ -361,7 +361,7 @@ function urlService(baseUrl) {
     var getSitesURL = function(workspace, version) {
         var r = root + '/workspaces/' + workspace + '/sites';
         return addVersion(r, version);
-
+    };
 
     /**
      * @ngdoc method
@@ -377,7 +377,7 @@ function urlService(baseUrl) {
      */
     var getElementSearchURL = function(query, workspace) {
         return root + '/workspaces/' + workspace + '/search?keyword=' + query;
-
+    };
 
     var getWorkspacesURL = function() {
         return root + '/workspaces';
@@ -404,7 +404,7 @@ function urlService(baseUrl) {
     };
 
 
- addVersion = function(url, version) {
+    var addVersion = function(url, version) {
         if (version === 'latest')
             return url;
         if (isTimestamp(version))

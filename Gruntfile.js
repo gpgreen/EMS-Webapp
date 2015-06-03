@@ -75,7 +75,7 @@ module.exports = function(grunt) {
       mmsapp: {
         src: ['app/js/mms/controllers/*.js'],
         dest: 'build/js/mms/controllers.js'
-
+      }
     },
 
     uglify: {
@@ -98,14 +98,14 @@ module.exports = function(grunt) {
           'dist/mms.directives.min.js': ['dist/mms.directives.js'],
           'dist/mms.directives.tpls.min.js': ['dist/mms.directives.tpls.js']
         }
-
+      }
     },
 
     sass: {
       dist : {
         files: {
           'dist/css/partials/mms.css': 'src/directives/templates/styles/mms-main.scss',
-   'dist/css/partials/mm-main.css': 'app/styles/mm/mm-main.scss',
+          'dist/css/partials/mm-main.css': 'app/styles/mm/mm-main.scss',
           'dist/css/partials/ve-main.css': 'app/styles/ve/ve-main.scss'
         }
       }
@@ -121,7 +121,7 @@ module.exports = function(grunt) {
       },
       combine: {
         files: {
-   'dist/css/mm-mms.styles.min.css':
+            'dist/css/mm-mms.styles.min.css':
             ['dist/css/partials/mms.min.css', 'dist/css/partials/mm-main.min.css'],
           'dist/css/ve-mms.styles.min.css':
             ['dist/css/partials/mms.min.css', 'dist/css/partials/ve-main.min.css']
@@ -194,7 +194,7 @@ module.exports = function(grunt) {
         ]
       },
       emstest: {
- options: {
+          options: {
           hostname: '*',
           port: 9000,
           middleware: function(connect) {
@@ -208,7 +208,7 @@ module.exports = function(grunt) {
             port: 443,
             changeOrigin: true,
             https: true,
-   },
+          },
           {
             context: '/',
             host: 'localhost',
@@ -217,7 +217,7 @@ module.exports = function(grunt) {
         ]
       },
       emsstg: {
- options: {
+          options: {
           hostname: '*',
           port: 9000,
           middleware: function(connect) {
@@ -228,7 +228,7 @@ module.exports = function(grunt) {
           {
             context: '/alfresco',  // '/api'
             host: 'ems-stg.jpl.nasa.gov',//128.149.16.152',
-     port: 443,
+            port: 443,
             changeOrigin: true,
             https: true,
           },
@@ -240,7 +240,7 @@ module.exports = function(grunt) {
         ]
       },
       emsint: {
- options: {
+          options: {
           hostname: '*',
           port: 9000,
           middleware: function(connect) {
@@ -251,7 +251,7 @@ module.exports = function(grunt) {
           {
             context: '/alfresco',  // '/api'
             host: 'ems-int.jpl.nasa.gov',//128.149.16.152',
-     port: 443,
+            port: 443,
             changeOrigin: true,
             https: true,
           },
@@ -262,7 +262,7 @@ module.exports = function(grunt) {
           }
         ]
       },      
-uropaemsstg: {
+        europaemsstg: {
         options: {
           hostname: '*',
           port: 9000,
@@ -330,7 +330,7 @@ uropaemsstg: {
             port: 9001
           }
         ]
-
+      }
     },
 
     watch: {
@@ -365,7 +365,7 @@ uropaemsstg: {
     artifactory: {
       options: {
         url: 'http://europambee-build.jpl.nasa.gov:8082',
- repository: 'libs-snapshot-local',
+        repository: 'libs-snapshot-local',
         username: 'admin',
         password: 'password'
       },
@@ -377,7 +377,7 @@ uropaemsstg: {
           publish: [{
             id: 'gov.nasa.jpl:evm:zip',
             version: '0.2.1-SNAPSHOT',
-     path: 'deploy/'
+            path: 'deploy/'
           }]
         }
       }
@@ -432,8 +432,8 @@ uropaemsstg: {
           'reports/plato': [ 'app/js/**/*.js', 'src/directives/**/*.js', 'src/directives/**/*.js','src/services/**/*.js' ],
         }
       }
-    }
-
+   }
+   });
 
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -455,7 +455,7 @@ uropaemsstg: {
   grunt.loadNpmTasks('grunt-sloc');
   grunt.loadNpmTasks('grunt-plato');  
   
-unt.registerTask('install', ['npm-install', 'bower']);
+  // grunt.registerTask('install', ['npm-install', 'bower']);
   grunt.registerTask('install', ['bower-install-simple']);
   grunt.registerTask('compile', ['html2js', 'sass']);
   grunt.registerTask('lint',    ['jshint:beforeconcat']);
