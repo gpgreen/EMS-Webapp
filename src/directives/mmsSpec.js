@@ -74,7 +74,7 @@ angular.module('mms.directives')
  *      element spec for it would be shown, this will not use mms services to get the element
  */
 function mmsSpec(ElementService, WorkspaceService, ConfigService, $compile, $templateCache, $modal, $q, growl, _) {
-    var readTemplate = $templateCache.get('mms/templates/mmsSpec.html');
+    //var readTemplate = $templateCache.get('mms/templates/mmsSpec.html');
     //var editTemplate = $templateCache.get('mms/templates/mmsSpecEdit.html');
     var template = $templateCache.get('mms/templates/mmsSpec.html');
 

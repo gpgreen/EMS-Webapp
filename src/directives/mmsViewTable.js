@@ -21,7 +21,7 @@ function mmsViewTable($compile, $timeout, $templateCache) {
             $compile(element.contents())(scope);
             addLimit();
             }, 100);
-
+    };
 
     return {
         restrict: 'E',
